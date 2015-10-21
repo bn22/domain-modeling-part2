@@ -19,7 +19,7 @@ struct Money: CustomStringConvertible, Mathematics {
     
     func add(passedMoney: Money?) -> Money {
         var newMoney = Money(amount: nil, currency: nil)
-        if (passedMoney!.currency != nil && passedMoney!.amount != nil) {
+        if (passedMoney!.currency != nil && passedMoney!.amount != nil && amount != nil && currency != nil)  {
             let currentAmount = conversions(currency, target: passedMoney!.currency, amount: amount)
             let newAmount = currentAmount + passedMoney!.amount!
             newMoney = Money(amount: newAmount, currency: passedMoney!.currency)

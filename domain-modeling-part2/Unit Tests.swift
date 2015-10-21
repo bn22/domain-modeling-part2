@@ -90,14 +90,18 @@ func testFamilyStringConvertible(Expected : String, passedFamily : Family!) {
 func testAdd(amount : Double, Currency : String, money1 : Money?, money2 : Money?) {
     if (money1 != nil && money2 != nil) {
         print("Expected Result is \(amount) \(Currency)")
-        print(" Money 1 is \(money1!.amount!) \(money1!.currency!)")
-        print(" Money 2 is \(money2!.amount!) \(money2!.currency!)")
-        let add = money1!.add(money2!)
-        print(" Result from addition is \(add.amount!) \(add.currency!)")
-        if (amount == add.amount && Currency == add.currency) {
-            print(" The Unit Test has Passed")
+        if (money1!.currency != nil && money1!.amount != nil && money2!.currency != nil && money2!.amount != nil) {
+            print(" Money 1 is \(money1!.amount!) \(money1!.currency!)")
+            print(" Money 2 is \(money2!.amount!) \(money2!.currency!)")
+            let add = money1!.add(money2!)
+            print(" Result from addition is \(add.amount!) \(add.currency!)")
+            if (amount == add.amount && Currency == add.currency) {
+                print(" The Unit Test has Passed")
+            } else {
+                print(" The Unit Test has Failed")
+            }
         } else {
-            print(" The Unit Test has Failed")
+            print("One variable has an error")
         }
     } else {
         print("One of the variables is nil so unable to finish test")
@@ -107,14 +111,18 @@ func testAdd(amount : Double, Currency : String, money1 : Money?, money2 : Money
 func testSub(amount : Double, Currency : String, money1 : Money?, money2 : Money?) {
     if (money1 != nil && money2 != nil) {
         print("Expected Result is \(amount) \(Currency)")
-        print(" Money 1 is \(money1!.amount!) \(money1!.currency!)")
-        print(" Money 2 is \(money2!.amount!) \(money2!.currency!)")
-        let sub = money1!.sub(money2!)
-        print(" Result from subtraction is \(sub.amount!) \(sub.currency!)")
-        if (amount == sub.amount && Currency == sub.currency) {
-            print(" The Unit Test has Passed")
+        if (money1!.currency != nil && money1!.amount != nil && money2!.currency != nil && money2!.amount != nil) {
+            print(" Money 1 is \(money1!.amount!) \(money1!.currency!)")
+            print(" Money 2 is \(money2!.amount!) \(money2!.currency!)")
+            let sub = money1!.sub(money2!)
+            print(" Result from subtraction is \(sub.amount!) \(sub.currency!)")
+            if (amount == sub.amount && Currency == sub.currency) {
+                print(" The Unit Test has Passed")
+            } else {
+                print(" The Unit Test has Failed")
+            }
         } else {
-            print(" The Unit Test has Failed")
+            print("One variable has an error")
         }
     } else {
         print("One of the variables is nil so unable to finish test")
@@ -129,8 +137,8 @@ func testDouble(doubleAmount : Double?, currency : String?) {
         convertedMoney = doubleAmount!.toEUR
     } else if (currency == "GBP") {
         convertedMoney = doubleAmount!.toGBP
-    } else if (currency == "CAN") {
-        convertedMoney = doubleAmount!.toCAN
+    } else if (currency == "YEN") {
+        convertedMoney = doubleAmount!.toYEN
     } else {
         print("Not valid extension conversion to \(currency!)")
     }
